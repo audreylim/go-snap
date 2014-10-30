@@ -1,14 +1,14 @@
-# GoSnap
+# Snap
 
-GoSnap allows you to easily take pictures from the Raspberry Pi through the internet. GoSnap is also extensible with protocols such as Unix Domain Sockets.
+Snap allows you to easily take pictures from the Raspberry Pi through the internet. Snap is also extensible with protocols such as Unix Domain Sockets.
 
-GoSnap is experimental. Your [feedback](https://github.com/AudreyLim/gosnap/issues) is very much appreciated. 
+Snap is experimental. Your [feedback](https://github.com/AudreyLim/snap/issues) is very much appreciated. 
 
 ---------------------------------------
 
 * [Installation](#installation)
   * [Building the Compiler](#building-the-compiler)
-  * [Cross-compiling GoSnap](#cross-compiling-gosnap)
+  * [Cross-compiling Snap](#cross-compiling-snap)
 * [Usage](#usage)
   * [HTTP](#http)
   * [Extend](#extend)
@@ -22,7 +22,7 @@ Note: For setting up the Pi, refer to this [guide](http://www.raspberrypi.org/he
 
 ### Building the Compiler
 
-To run GoSnap on the Pi, ensure that you have enabled cross-compilation for Go. 
+To run Snap on the Pi, ensure that you have enabled cross-compilation for Go. 
 
 With Mac OS/Homebrew, install Go with this command
 
@@ -32,7 +32,7 @@ brew install go --cross-compile-common or --cross-compile-all
 
 If you have installed Go from source, set the environment variables and call ./all.bash in the src folder for each GOARCH/GOOS combination you need. For a step-by-step guide, refer to [this](http://dave.cheney.net/2013/07/09/an-introduction-to-cross-compilation-with-go-1-1).
 
-### Cross-compiling GoSnap
+### Cross-compiling Snap
 
 In your terminal, run the following command to compile `snap.go`:
 
@@ -62,9 +62,9 @@ With `snap` running on the Pi, you can command the Pi to take a picture by calli
 http://[IPAddressRaspberryPi]:3000/snap?flip=[value]
 ```
 
-The flip param is optional. The value can be `'hf'` for the picture to flip horizontally or `'vf'` to flip vertically.
+The flip param is optional. The value can be `hf` for the picture to flip horizontally or `vf` to flip vertically.
 
-GoSnap will stream the captured image so you can view it from your browser.
+Snap will stream the captured image so you can view it from your browser.
 
 ### Extend
 
