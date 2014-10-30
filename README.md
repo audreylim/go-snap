@@ -1,0 +1,80 @@
+# GoSnap
+
+GoSnap allows you to easily take pictures from the Raspberry Pi through the internet. GoSnap is also extensible with protocols such as Unix Domain Sockets.
+
+GoSnap is experimental. Your [feedback](https://github.com/AudreyLim/gosnap/issues) is very much appreciated. 
+
+---------------------------------------
+
+* [Installation](#installation)
+  * [Building the Compiler](#building-the-compiler)
+  * [Cross-compiling GoSnap](#cross-compiling-gosnap)
+* [Usage](#usage)
+  * [HTTP](#http)
+  * [Extend](#extend)
+* [License](#license)
+
+---------------------------------------
+
+## Installation
+
+Note: For setting up the Pi, refer to this [guide](http://www.raspberrypi.org/help/quick-start-guide/).
+
+### Building the Compiler
+
+To run GoSnap on the Pi, ensure that you have enabled cross-compilation for Go. 
+
+With Mac OS/Homebrew, install Go with this command
+
+```
+brew install go --cross-compile-common or --cross-compile-all
+```
+
+If you have installed Go from source, set the environment variables and call ./all.bash in the src folder for each GOARCH/GOOS combination you need. For a step-by-step guide, refer to [this](http://dave.cheney.net/2013/07/09/an-introduction-to-cross-compilation-with-go-1-1).
+
+### Cross-compiling GoSnap
+
+In your terminal, run the following command to compile `snap.go`:
+
+```
+GOARCH=arm GOOS=linux GOARM=5 go build snap.go
+```
+
+Next, copy the binary to the SD card for your Pi. You can do this by directly copying `snap` from your desktop/Mac to the SD card. If you are running the Pi [headless](https://www.andrewmunsell.com/blog/setting-up-raspberry-pi-as-headless-device), run this command:
+
+```
+scp snap pi@[IPAddressRaspberryPi]:/home/pi
+```
+
+## Usage
+
+Once you have `snap` on your SD card, run `snap` to allow it to listen on sockets.
+
+```
+./snap
+```
+
+### HTTP
+
+With `snap` running on the Pi, you can command the Pi to take a picture by calling the following URL from your browser:
+
+```
+http://[IPAddressRaspberryPi]:3000/snap?flip=[value]
+```
+
+The flip param is optional. The value can be `'hf'` for the picture to flip horizontally or `'vf'` to flip vertically.
+
+GoSnap will stream the captured image so you can view it from your browser.
+
+### Extend
+
+You can also use `snap` in your own Pi projects by calling `snap` with Unix Domain Sockets. 
+
+For an example implementation, see `unixclient.go`. 
+
+## License
+
+MIT License - see the LICENSE.txt file in the source distribution.
+
+
+
