@@ -12,28 +12,30 @@ import (
 )
 
 func cameraStill(w io.Writer, flip string) {
-	var args []string
+	args := []string{"-o", "-"}
 
 	if flip != "" {
-		args = append(args, "-"+flip, "-o", "-")
-	} else {
-		args = append(args, "-o", "-")
+		if flip == "vf" || flip == "hf" {
+			args = append([]string{"-" + flip}, args...)
+		} else {
+			args = nil
+			fmt.Fprintf(w, "Error: Invalid parameters")
+		}
 	}
 
 	cmd := exec.Command("raspistill", args...)
 
 	out, err := cmd.StdoutPipe()
 	if err != nil {
-		log.Fatal(err)
-		return
+		log.Println(err)
 	}
 	err = cmd.Start()
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 	_, err = io.Copy(w, out)
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
 	cmd.Wait()
 }
