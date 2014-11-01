@@ -15,8 +15,7 @@ func main() {
 	if err := syscall.Unlink(addr); err != nil && !os.IsNotExist(err) {
 		panic(err)
 	}
-	laddr := net.UnixAddr{addr, a}
-	conn, err := net.DialUnix(a, &laddr, &net.UnixAddr{"/tmp/unixdomain", a})
+	conn, err := net.DialUnix(a, nil, &net.UnixAddr{"/tmp/unixdomain", a})
 	if err != nil {
 		panic(err)
 	}
