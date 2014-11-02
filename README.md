@@ -75,13 +75,13 @@ For an example implementation, see `unixclient.go`.
 
 ### Tests
 
-To run tests on snap.go, compile raspistill-mock.go in the helpers folder:
+To run tests on snap.go, compile `raspistill-mock.go` in the helpers folder:
 
 ```
 go build raspistill-mock.go
 ```
 
-Set the PATH_TO_RASPISTILL-MOCK environment variable to the path to `raspistill-mock`, eg. `./helpers/raspistill-mock`.
+Set the `PATH_TO_RASPISTILL-MOCK` environment variable to the path to `raspistill-mock`, eg. `./helpers/raspistill-mock`.
 
 Run tests in the root folder:
 
