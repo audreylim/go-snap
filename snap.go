@@ -11,6 +11,12 @@ import (
 	"syscall"
 )
 
+func init() {
+	Path = "raspistill"
+}
+
+var Path string
+
 func cameraStill(w io.Writer, flip string) {
 	args := []string{"-o", "-"}
 
@@ -23,8 +29,7 @@ func cameraStill(w io.Writer, flip string) {
 		}
 	}
 
-	cmd := exec.Command("raspistill", args...)
-
+	cmd := exec.Command(Path, args...)
 	out, err := cmd.StdoutPipe()
 	if err != nil {
 		log.Println(err)
