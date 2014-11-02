@@ -12,6 +12,7 @@ Snap is experimental. Your [feedback](https://github.com/AudreyLim/snap/issues) 
 * [Usage](#usage)
   * [HTTP](#http)
   * [Extend](#extend)
+* [Tests](#tests)
 * [License](#license)
 
 ---------------------------------------
@@ -70,7 +71,23 @@ Snap will stream the captured image so you can view it from your browser.
 
 You can also use `snap` in your own Pi projects by calling `snap` with Unix Domain Sockets. 
 
-For an example implementation, see `unixclient.go`. 
+For an example implementation, see `unixclient.go`.
+
+### Tests
+
+To run tests on snap.go, compile raspistill-mock.go in the helpers folder:
+
+```
+go build raspistill-mock.go
+```
+
+Set the PATH_TO_RASPISTILL-MOCK environment variable to the path to `raspistill-mock`, eg. `./helpers/raspistill-mock`.
+
+Run tests in the root folder:
+
+```
+go test
+```
 
 ## License
 
