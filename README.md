@@ -73,7 +73,7 @@ You can also use `snap` in your own Pi projects by calling `snap` with Unix Doma
 
 For an example implementation, see `unixclient.go`.
 
-### Tests
+## Tests
 
 To run tests on snap.go, compile `raspistill-mock.go` in the helpers folder:
 
