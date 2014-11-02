@@ -17,7 +17,7 @@ func TestCameraStill(t *testing.T) {
 		t.Error(err)
 	}
 
-	//Where flip param is valid.
+	// Where flip param is valid.
 	output := bytes.NewBuffer(nil)
 	cameraStill(output, "")
 
@@ -25,7 +25,7 @@ func TestCameraStill(t *testing.T) {
 		t.Errorf("Test failed when flip param is empty")
 	}
 
-	//Where flip param is invalid.
+	// Where flip param is invalid.
 	output = bytes.NewBuffer(nil)
 	cameraStill(output, "asdf")
 

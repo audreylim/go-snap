@@ -46,7 +46,7 @@ func cameraStill(w io.Writer, flip string) {
 }
 
 func main() {
-	//listen on Unix Socket
+	// Listen on Unix Socket.
 	go func() {
 		addr := "/tmp/unixdomain"
 		if err := syscall.Unlink(addr); err != nil && !os.IsNotExist(err) {
@@ -67,7 +67,7 @@ func main() {
 		}
 	}()
 
-	//listen on HTTP
+	// Listen on HTTP.
 	http.HandleFunc("/snap", func(w http.ResponseWriter, r *http.Request) {
 		f := r.URL.Query().Get("flip")
 		w.WriteHeader(http.StatusOK)
